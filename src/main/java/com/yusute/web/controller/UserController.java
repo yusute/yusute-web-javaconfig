@@ -3,7 +3,9 @@ package com.yusute.web.controller;
 import com.yusute.web.mapper.po.User;
 import com.yusute.web.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
@@ -15,9 +17,16 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping("/index")
-    public String index(){
-        User user = userService.loadUserByUsername("admin");
-        return "index";
+    // Login form
+    @RequestMapping("/login.html")
+    public String login() {
+        return "login";
+    }
+
+    // Login form with error
+    @RequestMapping("/login-error.html")
+    public String loginError(Model model) {
+        model.addAttribute("loginError", true);
+        return "login";
     }
 }

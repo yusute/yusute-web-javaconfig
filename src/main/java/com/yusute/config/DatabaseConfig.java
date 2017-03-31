@@ -18,7 +18,7 @@ import javax.sql.DataSource;
 @Configuration
 @PropertySource(value={"classpath:jdbc.properties"})
 @EnableTransactionManagement
-public class DataBaseConfig {
+public class DatabaseConfig {
 
     @Value("${jdbc.driver}")
     private String driverClass;
@@ -29,7 +29,7 @@ public class DataBaseConfig {
     @Value("${jdbc.password}")
     private String passWord;
 
-    @Bean
+    @Bean(destroyMethod = "close")
     public DataSource dataSource() {
         DruidDataSource dataSource = new DruidDataSource();
         dataSource.setDriverClassName(driverClass);

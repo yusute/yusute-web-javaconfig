@@ -10,7 +10,7 @@ import javax.servlet.Filter;
  */
 public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
     protected Class<?>[] getRootConfigClasses() {
-        return new Class<?>[]{RootConfig.class, DataBaseConfig.class};
+        return new Class<?>[]{RootConfig.class, DatabaseConfig.class, SpringSecurityConfig.class};
     }
 
     protected Class<?>[] getServletConfigClasses() {
